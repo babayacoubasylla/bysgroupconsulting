@@ -10,7 +10,9 @@ import Footer from "./components/Footer";
 import { useReveal } from "./hooks/useReveal";
 
 export default function App() {
+  // ⚠️ Important : exécuter le hook dans le composant racine
   useReveal();
+
   return (
     <div className="selection-orange min-h-screen bg-ink text-paper">
       <Nav />
