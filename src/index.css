@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", serif;
+  --font-sans: "Sora", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ink: #0d1117;
+  --color-ink-soft: #161b22;
+  --color-paper: #f4f1ea;
+  --color-orange: #ff5c35;
+  --color-lime: #c6f24e;
+  --color-teal: #0fb8a6;
+  --color-sky: #4d9dff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Slow float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Grid pulse line */
+@keyframes drawline {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.selection-orange ::selection {
+  background: var(--color-orange);
+  color: #fff;
+}
